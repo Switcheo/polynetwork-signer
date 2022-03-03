@@ -1,0 +1,13 @@
+.idea/
+.idea/workspace.xml
+capital*
+db/bolt.bin
+config.json
+wallet.dat
+log/20*
+UTC--*
+*_test.go
+hydrogen_polynetwork_signer
+config/config.yml
+config/config*.yml
+.env
