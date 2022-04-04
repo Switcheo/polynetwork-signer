@@ -22,7 +22,9 @@ Before you can use the signer you will need to create a wallet file of PolyNetwo
 it as a Relayer to Poly net and get consensus nodes approving your registration. You can then send transactions to Poly
 network and start relaying.
 
-Before running, you need to have the configuration file `config.json` at the root
+Before running, you need to have the configuration file `config.yml`
+the path to the file should be set in a .env file in the root
+`CONFIG_FILE_PATH=<your_file_path>`
 
 ```
 rpcEndPoints:
@@ -43,5 +45,5 @@ Example:
 ```
 
 ```shell
-./hydrogen_polynetwork_signer 2 0x3e 12344 0x3333
+./hydrogen_polynetwork_signer 2 3e 12344 3333FF
 ```

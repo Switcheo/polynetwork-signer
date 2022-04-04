@@ -5,16 +5,16 @@ import (
 	"github.com/Switcheo/polynetwork-signer/app"
 	config "github.com/Switcheo/polynetwork-signer/config"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/joho/godotenv"
 	polycommon "github.com/polynetwork/poly/common"
 	"os"
 	"strconv"
-	"github.com/joho/godotenv"
 )
 
 const ArgsExpected = 4
 
 func main() {
-	if len(os.Args) != ArgsExpected + 1 {
+	if len(os.Args) != ArgsExpected+1 {
 		panic("Need " + strconv.Itoa(ArgsExpected) + " args")
 	}
 
@@ -37,9 +37,13 @@ func main() {
 	if err != nil {
 		panic("unable to parse chain id")
 	}
+	//println("chainID: ", chainID)
 
 	// Parse data
 	txData := common.Hex2Bytes(os.Args[2])
+
+	//println("txData: ", len(os.Args[2]), " ", len(txData), os.Args[2])
+	//println("")
 
 	// Parse height
 	height, err := strconv.ParseUint(os.Args[3], 10, 32)
@@ -47,8 +51,12 @@ func main() {
 		panic("unable to parse height")
 	}
 
+	//println("height: ")
+	//println(height)
 	// Parse proof
 	proof := common.Hex2Bytes(os.Args[4])
+	//println("proof: ", len(os.Args[4]), " ", len(proof), os.Args[4])
+	//println("")
 
 	// Get rest of params
 	relayerAddress := common.Hex2Bytes(polySigner.Address.ToHexString())
@@ -65,8 +73,10 @@ func main() {
 		panic("Serialization error: " + err.Error())
 	}
 
-	// print
-	fmt.Println(common.Bytes2Hex(sink.Bytes()))
+	hexTx := common.Bytes2Hex(sink.Bytes())
 
-	os.Exit(1)
+	// print
+	fmt.Printf(hexTx)
+
+	os.Exit(0)
 }
