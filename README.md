@@ -1,6 +1,8 @@
 <h1> polynetwork signer </h1>
 
-Signing helper for hydrogen
+Signing helper for hydrogen to help with getting the correct signed transaction to be broadcasted to poly network.
+
+Created as a stopgap solution because the relayer code was all written in golang and its non-trivial to port them all into js in a short amount of time  
 
 ## Build From Source
 
@@ -37,13 +39,18 @@ broadcaster:
 
 ## Run
 
-Example:
-
+Examples:
 
 ```shell
-./hydrogen_polynetwork_signer <chain_id> <tx_data> <height> <proof>
+# For a cross chain tx from evm
+./hydrogen_polynetwork_signer create_crosschain_tx <chain_id> <tx_data> <height> <proof>
+
+# For a cross chain tx from carbon (will automatically get header and proof from provided rpc url)
+./hydrogen_polynetwork_signer create_crosschain_tx_tendermint <rpc_url> <chain_id> <height> <ccmKeyHash>
 ```
 
 ```shell
-./hydrogen_polynetwork_signer 2 3e 12344 3333FF
+./hydrogen_polynetwork_signer create_crosschain_tx 2 3e 12344 3333FF
+
+./hydrogen_polynetwork_signer create_crosschain_tx_tendermint http://52.76.86.86:26657 2 12344 12333
 ```

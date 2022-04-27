@@ -26,6 +26,7 @@ import (
 type Config struct {
 	RpcEndPoints struct {
 		PolyNetwork string `yaml:"polynetwork"`
+		Carbon      string `yaml:"carbon"`
 	} `yaml:"rpcEndPoints"`
 	BroadCaster struct {
 		PolyNetwork struct {
